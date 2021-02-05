@@ -1,0 +1,15 @@
+{% extends 'base.html' %} 
+{% load has_group %}
+{% block content %}
+<h1 style="text-align: center; padding-top: 50px">Narudžba broj: {{ object.id }}</h1>
+<p> Adresa: {{object.adresa}} </p>
+<p> Datum naručene usluge: {{ object.datum_usluge }} </p>
+<p> Kontakt broj: {{ object.kontakt_broj }} </p>
+<p> Broj potrebnih poslužitelja: {{ object.broj_posluzitelja }} </p>
+<p> Odabrani meni: {{ object.odabrani_meni.naziv_menija }} ({{ object.odabrani_meni.ukupna_cijena }} HRK po glavi)</p>
+
+<p> Potrebna količina: {{ object.kolicina }} </p>
+<p> Napomena: {{ object.napomena }} </p>
+<p> Ukupan iznos: {{ object.cijena_usluge }} HRK </p>
+<button type="submit" class="btn btn-dark"><a class="button" style="text-decoration: none; color: white;" href="/">Povratak</a></button>
+{% endblock content %}

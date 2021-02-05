@@ -1,0 +1,24 @@
+{% extends 'base.html' %} 
+{% load has_group %}
+{% block content %}
+<h1 style="padding-top: 50px; text-align: center"> Pregled narudžbi </h1>
+{% if request.user|has_group:'zaposlenik' %}
+
+{% for object in object_list %}
+    <a style="text-decoration: none;" href="{% url 'detaljna_narudzba' object.pk %}">Narudžba broj: {{ object.id }}</a> <br>
+{% endfor %}
+
+{% else %}
+{% for object in object_list %}
+
+{% if object.narucitelj == request.user %}
+
+<a style="text-decoration: none;" href="{% url 'detaljna_narudzba' object.pk %}">Narudžba broj: {{ object.id }}</a> <br>
+
+{% endif %}
+{% endfor %}
+</ul>
+{% endif %}
+<br>
+<button type="submit" class="btn btn-dark"><a class="button" style="text-decoration: none; color: white;" href="/" >Povratak</a></button>
+{% endblock  %}

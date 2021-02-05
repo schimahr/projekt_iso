@@ -1,0 +1,16 @@
+{% extends 'base.html' %} 
+{% load has_group %}
+{% block content %}
+<h1 style="text-align: center; padding-top: 50px">{{ object.naziv_menija }}</h1>
+<p>Jela na meniju:</p>
+<ul>
+    {% for k in object.jelo_na_meniju.all %}
+        <li><b>{{ k.naziv_jela }}</b> ({{ k.tip_jela }}, "{{k.opis_jela}}")</li>
+    {% endfor %}
+</ul>
+<p>Ukupna cijena menija: {{ object.ukupna_cijena }} HRK</p>
+{% if request.user|has_group:'zaposlenik' %}
+<button type="submit" class="btn btn-dark"><a class="button" style="text-decoration: none; color: white;" href="{% url 'uredivanje_menija' menu.pk %}" >Uredi menu</a></button>
+{% endif %}
+<button type="submit" class="btn btn-dark"><a class="button" style="text-decoration: none; color: white;" href="/">Povratak</a></button>
+{% endblock content %}

@@ -1,0 +1,10 @@
+{% extends 'base.html' %} 
+{% block content %}
+<h1 style="text-align: center; padding-top: 50px">{{ object.naziv_jela }} </h1>
+<p>Opis: {{ object.opis_jela }} </p>
+<p>Tip jela: {{ object.tip_jela }} </p>
+<p>Cijena jela: {{ object.cijena }} HRK</p>
+
+<button type="button" class="btn btn-dark"><a class="button" style="text-decoration: none; color: white;" href="{% url 'uredivanje_jela' jelo.pk %}" >Uredi jelo</a></button>
+<button type="button" class="btn btn-dark"><a class="button" style="text-decoration: none; color: white;" href="/" >Povratak</a></button>
+{% endblock content %}

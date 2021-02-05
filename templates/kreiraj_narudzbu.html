@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load has_group %}
+{% block content %}
+<h1 style="text-align: center; padding-top: 50px">Naručivanje</h1>
+<form action="" method="post">{% csrf_token %}
+{{ form.as_p }}
+<button type="submit" class="btn btn-dark">Naruči</button>
+
+</form>
+<br>
+<button type="submit" class="btn btn-dark"><a class="button" style="text-decoration: none; color: white;" href="/" >Povratak</a></button>
+{% endblock content %}

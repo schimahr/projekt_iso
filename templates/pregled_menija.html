@@ -1,0 +1,16 @@
+{% extends 'base.html' %} 
+{% load has_group %}
+{% block content %}
+<h1 style="text-align: center; padding-top: 50px">Pregled menija</h1>
+<ul style=" font-size: 24px; list-style-type: square;">
+{% for object in object_list %}
+<li style="font-size: 24px;"> <a style="text-decoration: none;" href="{% url 'detaljni_meni' object.pk %}"> {{ object.naziv_menija }} </a> </li>
+{% endfor %}
+</ul>
+{% if user.is_authenticated %}
+{% if request.user|has_group:'zaposlenik' %}
+<button type="submit" class="btn btn-dark"><a class="button" style="text-decoration: none; color: white;" href="/meniji/dodaj_menu" >Dodaj meni</a></button>
+{% endif %}
+{% endif %}
+<button type="submit" class="btn btn-dark"><a class="button" style="text-decoration: none; color: white;" href="/">Povratak</a></button>
+{% endblock content %}

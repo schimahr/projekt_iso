@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style="text-align: center; padding-top: 50px">Prijava</h1>
+  {% if form.errors %}
+    <p>Vaša zaporka i lozinka nisu točni. Pokušajte ponovno.</p>
+  {% endif %}
+
+  {% if next %}
+    {% if user.is_authenticated %}
+      <p>Your account doesn't have access to this page. To proceed,
+      please login with an account that has access.</p>
+    {% else %}
+      <p>Please login to see this page.</p>
+    {% endif %}
+  {% endif %}
+
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    <div class="fieldWrapper">
+        {{ form.username.errors }}
+        <label for="{{ form.username.id_for_label }}">Korisničko ime:</label>
+        {{ form.username }}
+    </div> <br>
+    <div class="fieldWrapper">
+        {{ form.password.errors }}
+        <label for="{{ form.password.id_for_label }}">Lozinka:</label>
+        {{ form.password }}
+    </div> <br>
+    <button type="submit" class="btn btn-dark">Prijava</button>
+    <input type="hidden" name="next" value="{{ next }}" />
+  </form>
+
+  {# Assumes you setup the password_reset view in your URLconf #}
+
+{% endblock %}

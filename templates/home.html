@@ -1,0 +1,22 @@
+{% extends 'base.html' %} 
+{% load has_group %}
+{% block content %}
+{% if user.is_authenticated %}<h1 style="text-align: center; padding-top: 50px">Dobro došao {{ request.user.username }}!</h1>{% else %}<h1 style="text-align: center; padding-top: 50px">Dobro došli!</h1>{% endif %}
+{% if user.is_authenticated %}
+{% if request.user|has_group:'zaposlenik' %}
+<button type="button" class="btn btn-dark"><a class="button" style="text-decoration: none; color: white;" href="/jela">Pregled jela</a></button>
+<button type="button" class="btn btn-dark"><a class="button" style="text-decoration: none; color: white;" href="/meniji">Pregled menija</a></button>
+<button type="button" class="btn btn-dark"><a class="button" style="text-decoration: none; color: white;" href="/narudzbe">Pregled narudžbi</a></button>
+{% else %}
+<button type="button" class="btn btn-dark"><a class="button" style="text-decoration: none; color: white;" href="/meniji">Pregled menija</a></button>
+<button type="button" class="btn btn-dark"><a class="button" style="text-decoration: none; color: white;" href="/naruci">Naruči</a></button>
+<button type="button" class="btn btn-dark"><a class="button" style="text-decoration: none; color: white;" href="/narudzbe">Moje narudžbe</a></button>
+{% endif %}
+{% else %}
+<button type="button" class="btn btn-dark"><a class="button" style="text-decoration: none; color: white;" href="/meniji">Pregled menija</a></button>
+<button type="button" class="btn btn-dark"><a class="button" style="text-decoration: none; color: white;" href="/accounts/login">Prijava</a></button>
+<button type="button" class="btn btn-dark"><a class="button" style="text-decoration: none; color: white;" href="/accounts/registracija">Registracija</a></button>
+{% endif %}
+
+
+{% endblock content %}

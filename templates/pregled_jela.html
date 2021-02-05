@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load has_group %}
+{% block content %}
+<h1 style="text-align: center; padding-top: 50px">Pregled jela</h1>
+<ul style=" font-size: 24px; list-style-type: square;">
+{% for object in object_list %}
+<li style="font-size: 24px;"> <a style="text-decoration: none;" href="{% url 'detaljno_jelo' object.pk %}">{{ object.naziv_jela }}</a></li>
+{% endfor %}
+</ul>
+{% if request.user|has_group:'zaposlenik' %}
+<button type="button" class="btn btn-dark"><a class="button" style="text-decoration: none; color: white;" href="/jela/dodaj_jelo" >Dodaj Jelo</a></button>
+{% endif %}
+<button type="button" class="btn btn-dark"><a class="button" style="text-decoration: none; color: white;" href="/" >Povratak</a></button>
+{% endblock content %}
