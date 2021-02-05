@@ -26,7 +26,7 @@ SECRET_KEY = 'od0dnqni^0@mer(ql75z)sxjm$s8zuf4ldzgwo6d5&0_1u4bb6'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['polar-temple-69523.herokuapp.com']
+ALLOWED_HOSTS = ['polar-temple-69523.herokuapp.com','127.0.0.1']
 
 
 # Application definition
